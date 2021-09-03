@@ -1,2 +1,52 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3>マイページ編集画面</h3>
+  </div>
+  <div class="row">
+    <%= form_with model: @user do |f| %>
+
+    <div class="form-group">
+      <div class="row">
+        <div>
+          <%= f.label :氏名 %>
+        </div>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div>
+          <%= f.label :メールアドレス %>
+        </div>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div>
+          <%= f.label :役職名 %>
+        </div>
+        <%= f.text_field :director %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div>
+          <%= f.label :社用携帯番号 %>
+        </div>
+        <%= f.text_field :telephon_number %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= f.submit "変更", class: "btn btn-outline-secondary" %>
+      <%= link_to "退会", class: "btn btn-danger" %>
+    </div>
+
+
+    <% end %>
+  </div>
+</div>

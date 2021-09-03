@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_03_055940) do
+ActiveRecord::Schema.define(version: 2021_09_03_113640) do
+
+  create_table "owners", force: :cascade do |t|
+    t.integer "client_id"
+    t.text "comment"
+    t.date "order_date"
+    t.boolean "order_status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quotations", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "user_id"
+    t.text "comment"
+    t.string "manufacturer_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

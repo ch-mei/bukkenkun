@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3>マイページ</h3>
+  </div>
+  <div>
+    登録情報
+    <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary m-2 ml-auto" %>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>氏名</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>役職名</th>
+        <td><%= @user.director %></td>
+      </tr>
+      <tr>
+        <th>社用携帯番号</th>
+        <td><%= @user.telephon_number %></td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -15,18 +15,22 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <div class="text-middle">
+            <% if user_signed_in? %>
+              <%= current_user.name %>さんログイン中
+            <% end %>
 
           </div>
-          <button class="navbar-toggler" type="button" date-toggler="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"></button>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3"><%= link_to "マイページ", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "チャット", class: 'btn btn-outline-secondary' %></li>
-              <li class="nav-item mr-3"><%= link_to "見積もり", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "見積もり", quotations_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "顧客", class: 'btn btn-outline-secondary' %></li>
-              <li class="nav-item mr-3"><%= link_to "施主" , class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "施主", owners_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %></li>
             </ul>
           </div>
