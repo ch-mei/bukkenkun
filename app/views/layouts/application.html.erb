@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bukkenkun</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!--ヘッダー部-->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <div class="text-middle">
+
+          </div>
+          <button class="navbar-toggler" type="button" date-toggler="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"></button>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item mr-3"><%= link_to "マイページ", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "チャット", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "見積もり", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "顧客", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "施主" , class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--ボディー部-->
+    <%= yield %>
+  </body>
+</html>
