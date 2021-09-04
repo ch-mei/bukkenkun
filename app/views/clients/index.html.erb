@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h2>顧客一覧</h2>
+    <div>
+      <%= link_to "顧客追加", new_client_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>販売店</th>
+            <th>工務店</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clients.each do |f| %>
+          <tr>
+            <td><%= f.sales_outlet %></td>
+            <td><%= f.construction_shop %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

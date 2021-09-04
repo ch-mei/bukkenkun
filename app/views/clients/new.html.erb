@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h2>顧客新規登録画面</h2>
+  </div>
+
+  <div class="row">
+    <div>
+      <%= form_with model: @client, url: clients_path, local: true do |f| %>
+      <table>
+        <tr>
+          <th>販売店名</th>
+          <td><%= f.text_field :sales_outlet %></td>
+        </tr>
+        <tr>
+          <th>工務店名</th>
+          <td><%= f.text_field :construction_shop %></td>
+        </tr>
+      </table>
+      <div>
+        <%= f.submit "新規登録", class: "btn btn-outline-secondary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

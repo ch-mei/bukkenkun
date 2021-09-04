@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <h2>物件追加画面</h2>
+  </div>
+  
+  <div class="row">
+    <div>
+      <%= form_with model: @owner, url: owner_path(@owner), local: true do |f| %>
+      <table>
+        <tr>
+          <th>物件名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>販売店名</th>
+          <td><%= f.collection_select :client_id, @clients.all, :id, :sales_outlet, {prompt:"--選択してください--"}, class: "form-control" %></td>
+          
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

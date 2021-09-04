@@ -43,7 +43,7 @@
 
     <div class="row">
       <%= f.submit "変更", class: "btn btn-outline-secondary" %>
-      <%= link_to "退会", class: "btn btn-danger" %>
+      <%= link_to "退会", confirm_unsubscribe_path(@user), class: "btn btn-danger" %>
     </div>
 
 

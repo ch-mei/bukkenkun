@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_inactive_user, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -17,6 +18,18 @@ class Users::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
+  def reject_inactive_user
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      if @user.active_for_authentication? == false
+        flash[:error] = "退会済みです"  
+        redirect_to new_uer_session_path
+      end
+    else
+      flash[:error] = "必要項目を入力してください"
+    end
+  end
 
   # protected
 

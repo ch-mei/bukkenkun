@@ -29,7 +29,7 @@
               <li class="nav-item mr-3"><%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "チャット", class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "見積もり", quotations_path, class: 'btn btn-outline-secondary' %></li>
-              <li class="nav-item mr-3"><%= link_to "顧客", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "顧客", clients_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "施主", owners_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %></li>
             </ul>
