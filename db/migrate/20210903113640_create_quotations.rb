@@ -3,8 +3,8 @@ class CreateQuotations < ActiveRecord::Migration[5.2]
     create_table :quotations do |t|
       t.integer :owner_id
       t.integer :user_id
-      t.text :comment, null: true #コメント
-      t.string :manufacturer_name, null: true #メーカー名
+      t.text :comment, null: true
+      t.string :manufacturer_name, null: true
 
       t.timestamps
     end

@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   def new
-    @owner = Owner.new
+    @sales_outlet = SalesOutlet.new
+    @construction_shop = ConstructionShop.new
   end
 
   def index
@@ -8,23 +9,18 @@ class ClientsController < ApplicationController
   end
 
   def show
+
   end
 
   def create
-    @client = Client.new(client_params)
-    @client.save
-    redirect_to client_path(@client.id)
+
+
   end
 
   def edit
   end
 
   def update
-  end
-
-  private
-  def client_params
-    params.require(:client).permit(:user_id, :sales_outlet, :construction_shop)
   end
 
 end

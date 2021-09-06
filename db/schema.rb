@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_123407) do
+ActiveRecord::Schema.define(version: 2021_09_05_120448) do
 
   create_table "clients", force: :cascade do |t|
     t.integer "user_id"
-    t.string "sales_outlet"
-    t.string "construction_shop"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "construction_shops", force: :cascade do |t|
+    t.integer "client_id"
+    t.integer "sales_outlet_id"
+    t.string "construction_shop_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "costruction_shops", force: :cascade do |t|
+    t.integer "client_id"
+    t.integer "sales_outlet_id"
+    t.string "construction_shop_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +49,13 @@ ActiveRecord::Schema.define(version: 2021_09_04_123407) do
     t.integer "user_id"
     t.text "comment"
     t.string "manufacturer_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sales_outlets", force: :cascade do |t|
+    t.integer "client_id"
+    t.string "sales_outlet_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
