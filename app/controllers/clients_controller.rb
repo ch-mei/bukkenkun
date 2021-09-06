@@ -14,7 +14,6 @@ class ClientsController < ApplicationController
 
   def create
 
-
   end
 
   def edit
