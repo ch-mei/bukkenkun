@@ -6,5 +6,6 @@ class User < ApplicationRecord
          
   has_many :quotations
   has_many :clients
+  has_many :chats, dependent: :destroy
   
 end

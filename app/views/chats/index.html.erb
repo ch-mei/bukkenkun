@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h2>チャット一覧</h2>
+  </div>
+</div>
+
+<table class="room">
+  <tbody>
+    <tr>
+      <td>
+        <% @chat_partners.each do |f| %>
+          <%= link_to chat_path(f.id) do %>
+            <h4><%= f.name %>さん</h4>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

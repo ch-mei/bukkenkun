@@ -26,8 +26,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3"><%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-outline-secondary' %></li>
-              <li class="nav-item mr-3"><%= link_to "チャット", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "マイページ", class: 'btn btn-outline-secondary' %></li>
+              <li class="nav-item mr-3"><%= link_to "チャット", chats_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "見積もり", quotations_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "顧客", clients_path, class: 'btn btn-outline-secondary' %></li>
               <li class="nav-item mr-3"><%= link_to "施主", owners_path, class: 'btn btn-outline-secondary' %></li>
