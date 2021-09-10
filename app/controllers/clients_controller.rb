@@ -5,7 +5,8 @@ class ClientsController < ApplicationController
   end
 
   def index
-    @clients = Client.all
+    @sales_outlets = SalesOutlet.all
+    @construction_shops = ConstructionShop.all
   end
 
   def show

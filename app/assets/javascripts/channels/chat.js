@@ -8,7 +8,7 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
   received: function(data) {
     //画面を開いているのがチャット送信者だった場合
     if (data["isCurrent_user"]==true){
-      sentence = `<div class='mycomment'><p>${data["sentence"]}</p></div>`;
+      var sentence = `<div class='mycomment'><p>${data["sentence"]}</p></div>`;
     }
     //画面を開いているのがチャット受信者だった場合
     else{
@@ -17,17 +17,18 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
       <div class='chatting'><div class='says'><p>${data["sentence"]}</p>
       </div></div></div>`;
     }
+    /*global $*/
     $('#chats').append(sentence);
   },
   speak: function(sentence) {
-    current_user_id=$("#current_user_id").val();
-    partner_id=$("#partner_id").val();
+    var current_user_id = $("#current_user_id").val();
+    var partner_id=$("#partner_id").val();
     return this.perform('speak',{sentence: sentence, current_user_id: current_user_id, partner_id: partner_id});
   }
 });
 $(function(){
   $("#send").on("click",function(e){
-    sentence=$("#sentence").val();
+    var sentence=$("#sentence").val();
     App.chat.speak(sentence);
     $("#sentence").val(""); //フォームを空に
     e.preventDefault();

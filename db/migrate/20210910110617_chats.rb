@@ -1,9 +1,9 @@
 class Chats < ActiveRecord::Migration[5.2]
   def change
     create_table :chats do |t|
-      t.references :user, null: false
-      t.integer :partner_id, null: false
-      t.string :sentence, null: false
+      t.integer :user_id
+      t.integer :room_id
+      t.text :message
 
       t.timestamps
     end

@@ -12,14 +12,36 @@
         <thead>
           <tr>
             <th>販売店</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sales_outlets.each do |f| %>
+          <tr>
+            <td>
+            <%= link_to sales_outlet_path(f.id) do %>
+              <%= f.sales_outlet_name %>様
+            <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
             <th>工務店</th>
           </tr>
         </thead>
         <tbody>
-          <% @clients.each do |f| %>
+          <% @construction_shops.each do |f| %>
           <tr>
-            <td><%= f.sales_outlet %></td>
-            <td><%= f.construction_shop %></td>
+            <td>
+              <%= link_to construction_shop_path(f.id) do %>
+                <%= f.construction_shop_name %>様
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

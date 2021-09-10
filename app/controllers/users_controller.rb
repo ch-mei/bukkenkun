@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def show
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def unsubscribe
     @user = current_user
   end

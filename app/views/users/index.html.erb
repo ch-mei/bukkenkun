@@ -1,2 +1,28 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>ユーザー一覧</h2>
+  </div>
+
+  <div class="row">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ユーザー名</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |f| %>
+          <tr>
+            <td>
+              <%= link_to user_path(f.id) do %>
+              <%= f.name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

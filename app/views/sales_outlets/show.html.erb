@@ -21,13 +21,28 @@
           <div>
             <% end %>
             <%= form_with model: @construction_shop, url: construction_shops_path, method: :post, local: true do |f| %>
-            <%= f.text_field :construction_shop_name %>
-            <%= f.submit "工務店を追加する", class: "btn btn-success" %>
+              <%= f.text_field :construction_shop_name %>
+              <%= f.submit "工務店を追加する", class: "btn btn-success" %>
             <% end %>
           </div>
         </tbody>
       </table>
     </div>
-
+    
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>物件一覧</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%# @owners.each do |f| %>
+          <tr>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

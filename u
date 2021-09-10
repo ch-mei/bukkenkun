@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/bukkenkun/app/views/users/show.html.erb:11 ActionView::CompiledTemplates#_app_views_users_show_html_erb___1582248782089781479_69992809932120:
+
+     [1;34m6[0m:     登録情報
+     [1;34m7[0m:     <% if @user == current_user %>
+     [1;34m8[0m:     <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary m-2 ml-auto" %>
+     [1;34m9[0m:     <% end %>
+    [1;34m10[0m:      <% binding.pry %>
+ => [1;34m11[0m:   <div>
+    [1;34m12[0m:     <table>
+    [1;34m13[0m:       <tr>
+    [1;34m14[0m:         <th>氏名</th>
+    [1;34m15[0m:         <td><%= @user.name %></td>
+    [1;34m16[0m:       </tr>
+

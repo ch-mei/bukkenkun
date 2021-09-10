@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'chats/show'
   devise_for :users
 
-  root to: 'homes#top'
+  root to: 'homes#home'
 
   resources :users ,only: [:index, :show, :edit, :update]
   resources :owners
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :sales_outlets
   resources :construction_shops
   resources :chats
+  resources :rooms, only: %i[create index show]
 
   get 'unsubscribe/:name' => 'users#unsubscribe', as: 'confirm_unsubscribe' #退会画面へ遷移
   patch '/users/:id/unsubscribe' => 'users#withdraw', as: 'unsubscribe_withdraw_user' #会員ステータス切り替え

@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/bukkenkun/app/views/users/show.html.erb:32 ActionView::CompiledTemplates#_app_views_users_show_html_erb___1582248782089781479_69992802426460:
+
+    [1;34m27[0m:         <td><%= @user.telephon_number %></td>
+    [1;34m28[0m:       </tr>
+    [1;34m29[0m:       <tr>
+    [1;34m30[0m:         <td>
+    [1;34m31[0m:           <% binding.pry %>
+ => [1;34m32[0m:           <% if current_user != @user %>
+    [1;34m33[0m:             <%= link_to 'chat', rooms_path, method: :post %>
+    [1;34m34[0m:           <% end %>
+    [1;34m35[0m:         </td>
+    [1;34m36[0m:       </tr>
+    [1;34m37[0m:     </table>
+

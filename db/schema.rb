@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_053205) do
+ActiveRecord::Schema.define(version: 2021_09_10_112250) do
 
   create_table "chats", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "partner_id", null: false
-    t.string "sentence", null: false
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -62,9 +61,21 @@ ActiveRecord::Schema.define(version: 2021_09_07_053205) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sales_outlets", force: :cascade do |t|
     t.integer "client_id"
     t.string "sales_outlet_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

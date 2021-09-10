@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <h2><%= @partner.name %>さんとのチャット</h2>
+    <h2><%= @user.name %>さんとのチャット</h2>
   </div>
 </div>
-<div id="chats">
+<div id="chats" >
   <% @chats.each do |f| %>
     <% if f.user_id == current_user.id %>
       <div class="mycomment">
-        <p><%= f.sentence%></p>
+        <p><%= f.message %></p>
       </div>
     <% else %>
       <div class="fukidasi">
@@ -16,7 +16,7 @@
         </div>-->
         <div class="chatting">
           <div class="says">
-            <p><%= f.sentence %></p>
+            <p><%= f.message %></p>
           </div>
         </div>
       </div>
@@ -24,11 +24,11 @@
   <% end %>
 </div>
 
-<div class="form">
-  <%= form_with model: @chat, url: chats_path, local: true do |f| %>
-    <%= f.text_field :sentence %>
-    <%= f.hidden_field :partner_id %>
-    <%= f.submit "送信", class: "btn btn-success" %>
+<div class="form" id="send-form">
+  <%= form_with model: @chat, remote: true do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "送信", class:"btn btn-sm btn-success chat-btn" %>
   <% end %>
 </div>
 

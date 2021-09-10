@@ -1,26 +1,36 @@
 class ChatsController < ApplicationController
+
   def index
-    @my_chats = current_user.chats
-    @chat_partners = User.where.not(id:current_user.id) #自分以外のuser
+  @users = User.all
   end
 
-  def show
-    @partner = User.find(params[:id])
-    @chats_by_myself = Chat.where(user_id: current_user.id, partner_id: @partner.id)
-    @chats_by_other = Chat.where(user_id: @partner.id, partner_id: current_user.id)
-    @chats = @chats_by_myself.or(@chats_by_other) #リレーションオブジェクトたちを結合する
-    @chats = @chats.order(:created_at)
-    @chat = Chat.new(partner_id: @partner.id)
+ def show
+  @user = User.find(params[:id])
+  rooms = current_user.user_rooms.pluck(:room_id)
+  user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+
+  if user_rooms.nil?
+   @room = Room.new
+   @room.save
+   UserRoom.create(user_id: @user.id, room_id: @room.id)
+   UserRoom.create(user_id: current_user.id, room_id: @room.id)
+  else
+   @room = user_rooms.room
   end
 
-  def create
-    @chat = current_user.chats.new(chat_params)
-    @chat.save
-  end
+  @chats = @room.chats
+  @chat = Chat.new(room_id: @room.id)
+ end
 
-private
-def chat_params
-  params.require(:chat).permit(:sentence, :partner_id)
-end
+ def create
+  @chat = current_user.chats.new(chat_params)
+  @chat.save!
+ end
+
+ private
+
+ def chat_params
+  params.require(:chat).permit(:message, :room_id)
+ end
 
 end

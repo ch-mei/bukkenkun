@@ -4,8 +4,9 @@
   </div>
   <div>
     登録情報
+    <% if @user == current_user %>
     <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary m-2 ml-auto" %>
-  </div>
+    <% end %>
   <div>
     <table>
       <tr>
@@ -23,6 +24,13 @@
       <tr>
         <th>社用携帯番号</th>
         <td><%= @user.telephon_number %></td>
+      </tr>
+      <tr>
+        <td>
+          <% if current_user != @user %>
+            <%= link_to 'Begin Chat', chat_path(@user.id) %>
+          <% end %>
+        </td>
       </tr>
     </table>
   </div>
