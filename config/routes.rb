@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'chats/index'
-  get 'chats/show'
-  devise_for :users
 
-  root to: 'homes#home'
+  devise_scope :user do
+    root "users/sessions#new"
+  end
+
+  devise_for :users, :controller => {
+    sessions: 'users/sessions'
+  }
+
+  get '/top'=> 'homes#top'
 
   resources :users ,only: [:index, :show, :edit, :update]
   resources :owners
