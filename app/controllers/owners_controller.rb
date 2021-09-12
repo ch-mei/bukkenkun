@@ -6,7 +6,11 @@ class OwnersController < ApplicationController
   def show
   end
   
+  def create
+  end
+  
   def new
+    @owner = Owner.new
   end
 
   def edit

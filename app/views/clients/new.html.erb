@@ -5,11 +5,14 @@
 
   <div class="row">
     <div>
-      <%= form_with model: @sales_outlet, url: sales_outlets_path, method: :post, local: true do |f| %>
+      <%= form_with model: @sales_outlet, url: sales_outlets_path, local: true do |f| %>
       <table>
         <tr>
           <th>販売店名</th>
-          <td><%= f.text_field :sales_outlet_name %></td>
+          <td>
+            <%= f.text_field :sales_outlet_name %>
+            <%= f.hidden_field :client_id %>
+          </td>
         </tr>
       </table>
       <div>
@@ -18,11 +21,14 @@
       <% end %>
     </div>
     <div>
-      <%= form_with model: @construction_shop, url: construction_shops_path, method: :post,  local: true do |f| %>
+      <%= form_with model: @construction_shop, url: construction_shops_path, local: true do |f| %>
       <table>
         <tr>
           <th>工務店名</th>
-          <td><%= f.text_field :construction_shop_name %></td>
+          <td>
+            <%= f.text_field :construction_shop_name %>
+            <%#= f.hidden_field :client_id %>
+          </td>
         </tr>
       </table>
       <div>

@@ -9,7 +9,7 @@ class ConstructionShopsController < ApplicationController
 
   def create
     @construction_shop = ConstructionShop.new(construction_shop_params)
-    if @construction_shop.save
+    if @construction_shop.save!
       redirect_to construction_shop_path(@construction_shop.id)
     else
       redirect_back(fallback_location: root_path)

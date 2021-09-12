@@ -20,15 +20,17 @@
           </div>
           <div>
             <% end %>
-            <%= form_with model: @construction_shop, url: construction_shops_path, method: :post, local: true do |f| %>
+            <%= form_with model: @construction_shop, url: construction_shops_path, local: true do |f| %>
               <%= f.text_field :construction_shop_name %>
+              <%= f.hidden_field :sales_outlet_id, value: @sales_outlet.id %>
+              <%= f.hidden_field :client_id %>
               <%= f.submit "工務店を追加する", class: "btn btn-success" %>
             <% end %>
           </div>
         </tbody>
       </table>
     </div>
-    
+
     <div>
       <table>
         <thead>
@@ -37,11 +39,13 @@
           </tr>
         </thead>
         <tbody>
-          <%# @owners.each do |f| %>
+          <% @owners.each do |f| %>
           <tr>
-            
+
           </tr>
+          <% end %>
         </tbody>
+
       </table>
     </div>
   </div>

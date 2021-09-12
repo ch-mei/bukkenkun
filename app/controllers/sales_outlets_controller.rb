@@ -4,15 +4,21 @@ class SalesOutletsController < ApplicationController
     @sales_outlet = SalesOutlet.find(params[:id])
     @construction_shops = @sales_outlet.construction_shops
     @construction_shop = ConstructionShop.new
+    @owners = Owner.all
   end
 
   def create
-    @sales_outlet = SalesOutlet.new(sales_outlet_params)
-    if @sales_outlet.save!
-      redirect_to sales_outlet_path(@sales_outlet.id)
-    else
-      redirect_back(fallback_location: root_path)
+    ActiveRecord::Base.transaction do
+      @client = Client.new(client_params)
+      binding.pry
+      @client.save!
+      @sales_outlet = SalesOutlet.new(sales_outlet_params[:sales_outlet])
+      @sales_outlet.save!
+      rescue => e
+        logger.debug("failed. because of #{e}")
+        redirect_back(fallback_location: root_path)
     end
+    redirect_to sales_outlet_path(@sales_outlet.id)
   end
 
   def update
@@ -25,7 +31,12 @@ class SalesOutletsController < ApplicationController
   end
 
   private
+
+  def client_params
+    params.require(:client).permit(:user_id)
+  end
+
   def sales_outlet_params
-    params.require(:sales_outlet).permit(:client_id, :sales_outlet_name)
+    params.require(:client).permit(sales_outlet:[:client_id, :sales_outlet_name])
   end
 end

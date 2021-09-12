@@ -1,4 +1,4 @@
 class SalesOutlet < ApplicationRecord
-  belongs_to :client, optional: true
+  belongs_to :client
   has_many :construction_shops
 end

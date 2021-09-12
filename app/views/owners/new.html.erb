@@ -2,7 +2,7 @@
   <div class="row">
     <h2>物件追加画面</h2>
   </div>
-  
+
   <div class="row">
     <div>
       <%= form_with model: @owner, url: owner_path(@owner), local: true do |f| %>
@@ -13,10 +13,11 @@
         </tr>
         <tr>
           <th>販売店名</th>
-          <td><%= f.collection_select :client_id, @clients.all, :id, :sales_outlet, {prompt:"--選択してください--"}, class: "form-control" %></td>
-          
+          <td><%= f.collection_select :sales_outlet_id, @sales_outlets.all, :id, :sales_outlet, {prompt:"--選択してください--"}, class: "form-control" %></td>
+
         </tr>
       </table>
+      <% end %>
     </div>
   </div>
 </div>
