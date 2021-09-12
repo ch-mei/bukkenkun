@@ -2,7 +2,7 @@ class SalesOutletsController < ApplicationController
 
   def show
     @sales_outlet = SalesOutlet.find(params[:id])
-    @construction_shops = ConstructionShop.all
+    @construction_shops = @sales_outlet.construction_shops
     @construction_shop = ConstructionShop.new
   end
 
@@ -11,7 +11,7 @@ class SalesOutletsController < ApplicationController
     if @sales_outlet.save!
       redirect_to sales_outlet_path(@sales_outlet.id)
     else
-      render 'clients/new'
+      redirect_back(fallback_location: root_path)
     end
   end
 
