@@ -1,7 +1,6 @@
 class ClientsController < ApplicationController
   def new
-    @sales_outlet = SalesOutlet.new
-    @construction_shop = ConstructionShop.new
+    @client = Client.new
   end
 
   def index

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_112250) do
+ActiveRecord::Schema.define(version: 2021_09_14_062722) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -24,17 +24,10 @@ ActiveRecord::Schema.define(version: 2021_09_10_112250) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "construction_shops", force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "sales_outlet_id"
-    t.string "construction_shop_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "costruction_shops", force: :cascade do |t|
     t.integer "client_id"
     t.integer "sales_outlet_id"
     t.string "construction_shop_name"

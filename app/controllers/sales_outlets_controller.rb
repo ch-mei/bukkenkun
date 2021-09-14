@@ -10,15 +10,15 @@ class SalesOutletsController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       @client = Client.new(client_params)
-      binding.pry
       @client.save!
       @sales_outlet = SalesOutlet.new(sales_outlet_params[:sales_outlet])
       @sales_outlet.save!
-      rescue => e
-        logger.debug("failed. because of #{e}")
-        redirect_back(fallback_location: root_path)
     end
     redirect_to sales_outlet_path(@sales_outlet.id)
+    rescue => e
+      logger.debug("failed. because of #{e}")
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
