@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_scope :user do
     root "users/sessions#new"
   end
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
   resources :construction_shops
   resources :chats
   resources :rooms, only: %i[create index show]
+  resources :materials
 
   get 'unsubscribe/:name' => 'users#unsubscribe', as: 'confirm_unsubscribe' #退会画面へ遷移
   patch '/users/:id/unsubscribe' => 'users#withdraw', as: 'unsubscribe_withdraw_user' #会員ステータス切り替え

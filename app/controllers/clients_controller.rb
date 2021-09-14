@@ -4,15 +4,23 @@ class ClientsController < ApplicationController
   end
 
   def index
-    @sales_outlets = SalesOutlet.all
-    @construction_shops = ConstructionShop.all
+    @clients = Client.all
+    #@owner = Owner.find(params[:id])
   end
 
   def show
+    @client = Client.find(params[:id])
+    @owners = @client.owners
 
   end
 
   def create
+    @client = Client.new(client_params)
+    if @client.save!
+      redirect_to clients_path
+    else
+      redirect_back(fallback_location: root_path)
+    end
 
   end
 
@@ -20,6 +28,11 @@ class ClientsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+  def client_params
+    params.require(:client).permit(:user_id, :name)
   end
 
 end

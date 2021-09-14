@@ -1,2 +1,39 @@
-<h1>Owners#show</h1>
-<p>Find me in app/views/owners/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2><%= @owner.name %>様</h2>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div>
+      <%= link_to "見積もり一覧へ", quotation_path, class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <table><%= @materials.each do |material| %>
+        
+        <thead>
+          <tr>
+            <th><%= material.material_name %></th>
+          </tr>
+        </thead>
+        <% end %>
+        <%= form_with model: @owner, local: true do |f| %>
+        <tbody>
+          <tr>
+
+            <td>
+              <%= f.radio_button :order_status, "true" %>発注済み
+              <%= f.radio_button :order_status, "false" %>未発注
+            </td>
+
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

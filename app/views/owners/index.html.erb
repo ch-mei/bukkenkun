@@ -12,8 +12,7 @@
         <thead>
           <tr>
             <th>物件名</th>
-            <th>販売店名</th>
-            <th>工務店名</th>
+            <th>顧客名</th>
           </tr>
         </thead>
         <tbody>
@@ -25,13 +24,8 @@
               <% end %>
             </td>
             <td>
-              <%= link_to client_path(f.client.sales_outlet.id) do %>
-                <%= f.client.sales_outlet %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to client_path(f.client.construction_shop.id) do %>
-                <%= f.client.construction_shop %>
+              <%= link_to client_path(f.id) do %>
+                <%= f.client.name %>
               <% end %>
             </td>
           </tr>
