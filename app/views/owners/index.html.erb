@@ -16,16 +16,16 @@
           </tr>
         </thead>
         <tbody>
-          <% @owners.each do |f| %>
+          <% @owners.each do |owner| %>
           <tr>
             <td>
-              <%= link_to owner_path(f.id) do %>
-                <%= f.name %>
+              <%= link_to owner_path(owner.id) do %>
+                <%= owner.name %>
               <% end %>
             </td>
             <td>
-              <%= link_to client_path(f.id) do %>
-                <%= f.client.name %>
+              <%= link_to client_path(owner.client_id) do %>
+                <%= owner.client.name %>
               <% end %>
             </td>
           </tr>

@@ -1,3 +1,3 @@
 class Material < ApplicationRecord
-  has_many :quotations
+  has_many :owners
 end

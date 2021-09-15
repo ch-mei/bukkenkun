@@ -13,27 +13,28 @@
 
   <div class="row">
     <div>
-      <table><%= @materials.each do |material| %>
-        
+      <%= form_with model: @owner, local: true do |f| %>
+      <table>
         <thead>
           <tr>
-            <th><%= material.material_name %></th>
+            <% @materials.each do |material| %>
+              <th><%= material.material_name %></th>
+            <% end %>
           </tr>
         </thead>
-        <% end %>
-        <%= form_with model: @owner, local: true do |f| %>
         <tbody>
           <tr>
-
+            <% @materials.each do |material| %>
             <td>
               <%= f.radio_button :order_status, "true" %>発注済み
               <%= f.radio_button :order_status, "false" %>未発注
             </td>
-
+            <% end %>
           </tr>
         </tbody>
-        <% end %>
       </table>
+       <%= f.submit "更新", class: "btn btn-outline-secondary" %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :users ,only: [:index, :show, :edit, :update]
   resources :owners
-  resources :quotations
+  resources :quotations, only: [:show, :create, :edit, :update, :destroy]
+  #get '/quotations/:id' => 'quotations#index', as: 'quotations'
   resources :clients
   resources :sales_outlets
   resources :construction_shops
