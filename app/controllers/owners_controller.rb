@@ -20,7 +20,7 @@ class OwnersController < ApplicationController
 
   def new
     @owner = Owner.new
-
+    @clients = Client.all
   end
 
   def edit
