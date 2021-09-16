@@ -1,2 +1,46 @@
-<h1>Owners#edit</h1>
-<p>Find me in app/views/owners/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2><%= @owner.name %>様</h2>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @material, local: true do |f| %>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>資材名</th>
+            <th>発注状況</th>
+            <th>発注予定日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @materials.each do |material| %>
+          <tr>
+            <td>
+              <%= material.material_name %>
+            </td>
+            <td>
+              <%= f.radio_button "#{material.material_name}_order_status".to_sym, "true" %>発注済み
+              <%= f.radio_button "#{material.material_name}_order_status".to_sym, "false" %>未発注
+            </td>
+            <td>
+              <%= f.date_field :order_date %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <%= f.submit "更新", class: "btn btn-outline-secondary" %>
+    </div>
+    <!--<div>
+      <%#= form_with model: @material, local: true do |f| %>
+      <%#= f.text_field :material_name %>
+      <%#= f.submit "追加", class: "btn btn-outline-secondary" %>
+      <%# end %>
+    </div>-->
+    <% end %>
+  </div>
+</div>

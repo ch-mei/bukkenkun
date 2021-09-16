@@ -1,7 +1,7 @@
 class OwnersController < ApplicationController
   def index
     @owners = Owner.all
-    
+
   end
 
   def show
@@ -24,16 +24,23 @@ class OwnersController < ApplicationController
   end
 
   def edit
+    @owner = Owner.find(params[:id])
+    @materials = Material.all
+    #@material = Material.
+
   end
 
   def destroy
   end
 
   def update
+    @owner = Owner.find(params[:id])
+    @owner.upate
+    redirect_to owner_path(@owner)
   end
 
   private
   def owner_params
-    params.require(:owner).permit(:client_id, :name)
+    params.require(:owner).permit(:client_id, :name, :material_id)
   end
 end

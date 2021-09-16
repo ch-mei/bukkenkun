@@ -7,34 +7,42 @@
 <div class="container">
   <div class="row">
     <div>
-      <%= link_to "見積もり一覧へ", quotation_path, class: "btn btn-success" %>
+      <%= link_to "見積もり一覧へ", quotations_index_path(@owner), class: "btn btn-success" %>
     </div>
   </div>
 
   <div class="row">
+    <div><%= link_to "編集", edit_owner_path(@owner), class: "btn btn-outline-secondary" %></div>
+    <div>発注状況一覧</div>
+
+  </div>
+
+  <div class="row">
     <div>
-      <%= form_with model: @owner, local: true do |f| %>
       <table>
         <thead>
           <tr>
-            <% @materials.each do |material| %>
-              <th><%= material.material_name %></th>
-            <% end %>
+            <th>資材名</th>
+            <th>発注状況</th>
+            <th>発注予定日</th>
           </tr>
         </thead>
         <tbody>
+          <% @materials.each do |material| %>
           <tr>
-            <% @materials.each do |material| %>
             <td>
-              <%= f.radio_button :order_status, "true" %>発注済み
-              <%= f.radio_button :order_status, "false" %>未発注
+              <%= material.material_name %>
             </td>
-            <% end %>
+            <td>
+              <%= material.order_status %>
+            </td>
+            <td>
+              <%= material.order_date %>
+            </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
-       <%= f.submit "更新", class: "btn btn-outline-secondary" %>
-      <% end %>
     </div>
   </div>
 </div>
