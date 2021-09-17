@@ -39,6 +39,12 @@ class OwnersController < ApplicationController
     redirect_to owner_path(@owner)
   end
 
+  def search
+    @owners = Owner.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
   def owner_params
     params.require(:owner).permit(:client_id, :name, :material_id)

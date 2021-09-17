@@ -39,9 +39,13 @@
           </tr>
         </thead>
         <tbody>
-          <% @owners.each do |f| %>
+          <% @owners.each do |owner| %>
           <tr>
-
+            <td>
+              <%= link_to owner_path(owner) do %>
+              <%= owner.name %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

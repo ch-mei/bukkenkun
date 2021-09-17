@@ -30,6 +30,12 @@ class ClientsController < ApplicationController
   def update
   end
 
+  def search
+    @clients = Client.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   private
   def client_params
     params.require(:client).permit(:user_id, :name)
