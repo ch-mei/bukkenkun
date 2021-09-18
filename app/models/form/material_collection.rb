@@ -4,7 +4,7 @@ class Form::MaterialCollection < Form::Base
 
   def initialize(attributes = {})
     super attributes
-    self.materials = DEFAULT_ITEM_COUNT.times.map { Form::Material.new } unless materials.present?
+    self.materials = Material.all #materialのレコードをすべて取得
   end
 
   def materials_attributes=(attributes)
@@ -13,12 +13,20 @@ class Form::MaterialCollection < Form::Base
     end
   end
 
+  def update(attributes)
+    attributes.each do |attribute|
+      material = Material.find(attribute.last['id'])
+      material.attributes = { order_status: attribute.last['order_status'] == 'true', order_date: attribute.last['order_date'] }
+      material.save
+    end
+  end
+
   def valid?
     valid_materials = target_materials.map(&:valid?).all?
     super && valid_materials
   end
 
-  def save
+  def save!
     return false unless valid?
     Material.transaction { target_materials.each(&:save!) }
     true
@@ -27,5 +35,5 @@ class Form::MaterialCollection < Form::Base
   def target_materials
     self.materials.select { |v| value_to_boolean(v.register) }
   end
-  
+
 end

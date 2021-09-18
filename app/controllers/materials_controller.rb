@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
 
   def index
-    @materials = Material.all
+    @materials = Material.all.page(params[:page]).per(10)
     @material = Material.new
   end
 
@@ -19,9 +19,9 @@ class MaterialsController < ApplicationController
   end
 
   def update_all
-    #@owner = Owner.find(params[:id])
-    @form = Form::MaterialCollection.new(material_collection_params)
-    if @form.save!
+    @owner = Owner.find(material_collection_params[:owner_id])
+    @form = Form::MaterialCollection.new
+    if @form.update(material_collection_params['materials_attributes'])
       redirect_to owner_path(@owner)
     else
       redirect_back(fallback_location: root_path)
@@ -49,6 +49,6 @@ class MaterialsController < ApplicationController
   def material_collection_params
     params
       .require(:form_material_collection)
-      .permit(materials_attributes: Form::Material::REGISTRABLE_ATTRIBUTES)
+      .permit(:owner_id, materials_attributes: Form::Material::REGISTRABLE_ATTRIBUTES)
   end
 end

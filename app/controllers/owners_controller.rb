@@ -1,13 +1,12 @@
 class OwnersController < ApplicationController
   def index
-    @owners = Owner.all
+    @owners = Owner.all.page(params[:page]).per(10)
 
   end
 
   def show
     @owner = Owner.find(params[:id])
     @materials = Material.all
-  end
 
   def create
     @owner = Owner.new(owner_params)
@@ -25,9 +24,8 @@ class OwnersController < ApplicationController
 
   def edit
     @owner = Owner.find(params[:id])
-    @materials = Material.all
-    #@material = Material.
-
+    @form = Form::MaterialCollection.new
+    pp @form.materials
   end
 
   def destroy

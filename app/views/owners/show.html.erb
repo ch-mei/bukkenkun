@@ -9,12 +9,11 @@
     <div>
       <%= link_to "見積もり一覧へ", quotations_index_path(@owner), class: "btn btn-success" %>
     </div>
+
   </div>
 
   <div class="row">
-    <div><%= link_to "編集", edit_owner_path(@owner), class: "btn btn-outline-secondary" %></div>
     <div>発注状況一覧</div>
-
   </div>
 
   <div class="row">
@@ -34,7 +33,11 @@
               <%= material.material_name %>
             </td>
             <td>
-              <%= material.order_status %>
+              <% if material.order_status == false %>
+                <div>未発注</div>
+              <% else %>
+                <div>発注済み</div>
+              <% end %>
             </td>
             <td>
               <%= material.order_date %>
@@ -44,5 +47,9 @@
         </tbody>
       </table>
     </div>
+
+  </div>
+  <div>
+    <%= link_to "編集", edit_owner_path(@owner), class: "btn btn-outline-secondary" %>
   </div>
 </div>

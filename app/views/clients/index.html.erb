@@ -30,7 +30,7 @@
               <% end %>
             </td>
             <td>
-              <%= f.owners.count %>
+              <%= f.owners.count %>件
             </td>
           </tr>
           <% end %>
@@ -38,6 +38,9 @@
       </table>
     </div>
 
+  </div>
+  <div>
+    <%= paginate @clients %>
   </div>
 
 </div>

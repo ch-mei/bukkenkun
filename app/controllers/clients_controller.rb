@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   end
 
   def index
-    @clients = Client.all
+    @clients = Client.all.page(params[:page]).per(10)
     #@owner = Owner.find(params[:id])
   end
 
