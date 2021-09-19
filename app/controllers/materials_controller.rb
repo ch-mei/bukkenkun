@@ -21,7 +21,13 @@ class MaterialsController < ApplicationController
   def update_all
     @owner = Owner.find(material_collection_params[:owner_id])
     @form = Form::MaterialCollection.new
-    if @form.update(material_collection_params['materials_attributes'])
+    material_collection_params['materials_attributes'].each do |material|
+      pp material
+      unless @owner.owner_materials.find_by(material_id: material[1][:id].to_i) #なければcreateあったらupdate
+        @owner.owner_materials.create(material_id: material[1][:id].to_i)
+      end
+    end
+    if @form.update(material_collection_params['materials_attributes']) #いらなくなる
       redirect_to owner_path(@owner)
     else
       redirect_back(fallback_location: root_path)
@@ -30,10 +36,15 @@ class MaterialsController < ApplicationController
 
 
   def update
-    @material = Material.find(params[:id])
-    @material.update(material_params)
+    @material = Material.find(params[:id]) #@materials each do |material |where(name)
+    @material.update(material_params) #update_all
     redirect_to materials_path
   end
+  
+  #@materials = Material.where(material_name: params[:material][:material_name])
+  #materials.each do |material|
+    #material.update(material_params)
+  #end
 
   def destroy
     @material = Material.find(params[:id])

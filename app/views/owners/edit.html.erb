@@ -6,6 +6,7 @@
   <div class="row">
     <%= form_with model: @form, url: update_all_materials_path, loacl: true do |f| %>
     <%= f.hidden_field :owner_id, value: @owner.id %>
+    <%#= f.hidden_field :owner_material_id, value: @owner_material.id %>
     <div>
       <table>
         <thead>
@@ -17,18 +18,20 @@
         </thead>
         <tbody>
           <%= f.fields_for :materials do |material| %>
+            <%#= f.fields_for :owner_materials do |owner_material| %>
             <tr>
               <td>
                 <%= material.object.material_name %>
               </td>
               <td>
-                <%= material.radio_button "order_status".to_sym, "true" %>発注済み
-                <%= material.radio_button "order_status".to_sym, "false" %>未発注
+                <%#= owner_material.radio_button "order_status".to_sym, "true" %>発注済み
+                <%#= owner_material.radio_button "order_status".to_sym, "false" %>未発注
               </td>
               <td>
-                <%= material.date_field :order_date %>
+                <%#= owner_material.date_field :order_date %>
               </td>
             </tr>
+            <%# end %>
           <% end %>
         </tbody>
       </table>

@@ -6,7 +6,11 @@ class OwnersController < ApplicationController
 
   def show
     @owner = Owner.find(params[:id])
-    @materials = Material.all
+    #@materials = Material.all
+    @materials = @owner.materials
+    #@materials.each do |a|
+     # p a
+    #end
   end
 
   def create
