@@ -36,8 +36,8 @@ class MaterialsController < ApplicationController
 
 
   def update
-    @material = Material.find(params[:id]) #@materials each do |material |where(name)
-    @material.update(material_params) #update_all
+    @material = Material.find(params[:id]) 
+    @material.update(material_params) 
     redirect_to materials_path
   end
   
