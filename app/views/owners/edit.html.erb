@@ -6,14 +6,15 @@
   <div class="row">
     <%= form_with model: @form, url: update_all_materials_path, loacl: true do |f| %>
     <%= f.hidden_field :owner_id, value: @owner.id %>
-    <%#= f.hidden_field :owner_material_id, value: @owner_material.id %>
+    <%#
+    = f.hidden_field :owner_material_id, value: @owner_material.id %>
     <div>
       <table>
         <thead>
           <tr>
             <th>資材名</th>
             <th>発注状況</th>
-            <th>発注予定日</th>
+            <th>発注予定日p</th>
           </tr>
         </thead>
         <tbody>
