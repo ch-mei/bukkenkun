@@ -7,6 +7,7 @@ class OwnersController < ApplicationController
   def show
     @owner = Owner.find(params[:id])
     @materials = Material.all
+  end
 
   def create
     @owner = Owner.new(owner_params)
