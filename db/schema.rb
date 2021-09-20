@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_19_120924) do
+ActiveRecord::Schema.define(version: 2021_09_20_130022) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 2021_09_19_120924) do
     t.string "name"
   end
 
-  create_table "construction_shops", force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "sales_outlet_id"
-    t.string "construction_shop_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "form_bases", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,13 +65,6 @@ ActiveRecord::Schema.define(version: 2021_09_19_120924) do
 
   create_table "materials", force: :cascade do |t|
     t.string "material_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "owner_materials", force: :cascade do |t|
-    t.integer "owner_id"
-    t.integer "material_id"
     t.boolean "order_status", default: false, null: false
     t.date "order_date"
     t.datetime "created_at", null: false
@@ -95,6 +80,12 @@ ActiveRecord::Schema.define(version: 2021_09_19_120924) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pdfs", force: :cascade do |t|
+    t.string "pdf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotations", force: :cascade do |t|
     t.integer "owner_id"
     t.integer "user_id"
@@ -103,16 +94,10 @@ ActiveRecord::Schema.define(version: 2021_09_19_120924) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "item_name"
+    t.string "pdf"
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sales_outlets", force: :cascade do |t|
-    t.integer "client_id"
-    t.string "sales_outlet_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

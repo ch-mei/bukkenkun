@@ -1,51 +1,19 @@
 <div class="container">
   <div class="row">
-    <h2><%= @owner.name %>様</h2>
+    <h2>物件編集</h2>
   </div>
 
   <div class="row">
-    <%= form_with model: @form, url: update_all_materials_path, loacl: true do |f| %>
-    <%= f.hidden_field :owner_id, value: @owner.id %>
-    <%#
-    = f.hidden_field :owner_material_id, value: @owner_material.id %>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>資材名</th>
-            <th>発注状況</th>
-            <th>発注予定日</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= f.fields_for :materials do |material| %>
-            <%#= f.fields_for :owner_materials do |owner_material| %>
-            <tr>
-              <td>
-                <%= material.object.material_name %>
-              </td>
-              <td>
-                <%#= owner_material.radio_button "order_status".to_sym, "true" %>発注済み
-                <%#= owner_material.radio_button "order_status".to_sym, "false" %>未発注
-              </td>
-              <td>
-                <%#= owner_material.date_field :order_date %>
-              </td>
-            </tr>
-            <%# end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <%= f.submit "更新", class: "btn btn-outline-secondary" %>
-    </div>
-    <!--<div>
-      <%#= form_with model: @material, local: true do |f| %>
-      <%#= f.text_field :material_name %>
-      <%#= f.submit "追加", class: "btn btn-outline-secondary" %>
-      <%# end %>
-    </div>-->
+    <%= form_with model: @owner, local: true do |f| %>
+      <div>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.submit "編集", class: "btn btn-outline-secondary" %>
+      </div>
     <% end %>
+  </div>
+  <div>
+    <%= link_to "削除", owner_path(@owner), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
   </div>
 </div>

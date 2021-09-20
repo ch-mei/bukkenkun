@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2><%= @owner.name %>様　見積もり追加画面</h2>
+    <h2>見積もり編集</h2>
   </div>
 
   <div class="row">
@@ -10,10 +10,11 @@
           <tr>
             <th>見積もりファイル</th>
             <td>
-              <%= f.hidden_field :created_at %>
-              <%= f.hidden_field :user_id, value: @user.id %>
-              <%= f.hidden_field :owner_id, value: @owner.id %>
               <%= f.file_field :pdf %>
+              編集前のファイル⇒
+              <a href="<%= @quotation.pdf_url %>" target="_blank">
+                <%= @quotation.created_at %> pdf
+              </a>
             </td>
           </tr>
           <tr>
@@ -32,7 +33,12 @@
           </tr>
         </table>
         <div>
-          <%= f.submit "登録", class: "btn btn-outline-secondary" %>
+          <div>
+            <%= f.submit "変更", class: "btn btn-outline-secondary" %>
+          </div>
+          <div>
+            <%= link_to "削除", quotation_path(@quotation), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
+          </div>
         </div>
       <% end %>
     </div>

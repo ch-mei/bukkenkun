@@ -34,11 +34,14 @@ class OwnersController < ApplicationController
   end
 
   def destroy
+    @owner = Owner.find(params[:id])
+    @owner.destroy!
+    redirect_to owners_path
   end
 
   def update
     @owner = Owner.find(params[:id])
-    @owner.upate
+    @owner.update(owner_params)
     redirect_to owner_path(@owner)
   end
 

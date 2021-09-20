@@ -1,2 +1,40 @@
-<h1>Quotations#show</h1>
-<p>Find me in app/views/quotations/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>見積もり詳細</h2>
+  </div>
+  <div class="row">
+    <div>
+    <%= link_to "戻る", quotations_index_path(@owner), class: "btn btn-outline-secondary" %>
+    </div>
+    <div>
+      <%= link_to "編集", edit_quotation_path(@quotation), class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <table>
+          <tr>
+            <th>見積もりファイル</th>
+            <td>
+              <a href="<%= @quotation.pdf_url %>" target="_blank">
+                <%= @quotation.created_at %> pdf
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th>見積もり名</th>
+            <td><%= @quotation.item_name %></td>
+          </tr>
+          <tr>
+            <th>メーカー名</th>
+            <td><%= @quotation.manufacturer_name %></td>
+          </tr>
+          <tr>
+            <th>コメント</th>
+            <td><%= @quotation.comment %></td>
+          </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
