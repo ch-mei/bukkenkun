@@ -17,7 +17,7 @@ class MaterialsController < ApplicationController
   def edit
     @material = Material.find(params[:id])
   end
-
+ 
   def update_all
     @owner = Owner.find(material_collection_params[:owner_id])
     @form = Form::MaterialCollection.new

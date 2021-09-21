@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   resources :users ,only: [:index, :show, :edit, :update]
   resources :owners do
     collection do
-      get 'search' => 'owners#search'
+      get 'search' => 'owners#search' #検索窓追加のため
+    end
+    member do
+      get 'material_edit'
+      post 'material_create'
     end
   end
-  #検索窓追加のため
 
   resources :quotations
   get '/owner/:id/quotations/' => 'quotations#index', as: 'quotations_index'
