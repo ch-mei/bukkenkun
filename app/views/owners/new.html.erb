@@ -7,27 +7,24 @@
     <div>
       <%= form_with model: @owner, local: true do |f| %>
       <%= f.fields_for :materials do |m| %>
-      <table>
-        <tr>
-          <th>物件名</th>
-          <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-          <th>顧客名</th>
-          <td><%= f.collection_select(:client_id, @clients, :id, :name) %></td>
-        </tr>
-        <tr>
-          <th>資材名</th>
-          <td>
-            <%= m.text_field :material_name %>
-            <%= m.hidden_field :order_status, value: false %>
-            <%= m.hidden_field :order_date %>
-            <%= m.hidden_field :id %>
-            <%#= link_to_add_association "追加", f, :material %>
-          </td>
-        </tr>
+      <div>
+        <div>
+          <div>物件名</div>
+          <div class="form-group"><%= f.text_field :name %></div>
+        </div>
+        <div>
+          <div>顧客名</div>
+          <div class="form-group"><%= f.collection_select(:client_id, @clients, :id, :name) %></div>
+        </div>
+        <div>
+          <div>資材名</div>
+          <%= render 'material_fields', f: m %>
+          <div class="links">
+            <%= link_to_add_association "追加", f, :materials %>
+          </div>
+        </div>
 
-      </table>
+      </div>
       <div>
         <%= f.submit "新規登録", class: "btn btn-outline-secondary" %>
       </div>
@@ -36,3 +33,4 @@
     </div>
   </div>
 </div>
+

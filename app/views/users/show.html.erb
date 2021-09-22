@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <h3>マイページ</h3>
+    <% if @user == current_user %>
+      <h3>マイページ</h3>
+    <% else %>
+      <h3>ユーザー詳細ページ</h3>
+    <% end %>
   </div>
   <div>
     登録情報
@@ -9,7 +13,7 @@
     <% end %>
   </div>
   <div class="row">
-    <%= attachment_image_tag(@user, :profile_image_id, :fill, 100, 100, fallback: "no_image.jpg")%>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: 'jpeg' %>
   </div>
     <table>
       <tr>

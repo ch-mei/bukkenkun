@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     end
     member do
       get 'material_edit'
+      get 'material_create'
       post 'material_create'
+      patch 'material_update'
     end
   end
 

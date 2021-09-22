@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
+
   end
 
   def edit
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if  @user.update(user_params)
       flash[:success] = "情報を更新しました"
       redirect_to user_path(@user)
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:is_deleted, :name, :email, :director, :telephon_number)
+    params.require(:user).permit(:is_deleted, :name, :email, :director, :telephon_number, :profile_image)
   end
 
 end

@@ -1,53 +1,23 @@
 <div class="container">
   <div class="row">
-    <h2><%= @owner.name %>様</h2>
+    <h2><%= @owner.name %>様発注内容編集</h2>
   </div>
 
   <div class="row">
-    <%= form_with model: @owner, loacl: true do |f| %>
-    <%#= f.hidden_field :owner_id, value: @owner.id %>
-    <%#
-    = f.hidden_field :owner_material_id, value: @owner_material.id %>
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>資材名</th>
-            <th>発注状況</th>
-            <th>発注予定日</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= f.fields_for :materials do |material| %>
-            <%#= f.fields_for :owner_materials do |owner_material| %>
-            <tr>
-              <td>
-                <%= material.label "material_name" %>
-                <%= material.text_fiel :material_name %>
-                <%= link_to_remove_association "remove material", material %>
-              </td>
-              <td>
-                <%= material.radio_button "order_status".to_sym, "true" %>発注済み
-                <%= material.radio_button "order_status".to_sym, "false" %>未発注
-              </td>
-              <td>
-                <%= material.date_field :order_date %>
-              </td>
-            </tr>
-            <%# end %>
-          <% end %>
-        </tbody>
-      </table>
+      <%= form_with model: @owner, url: material_update_owner_path(@owner), local: true do |f| %>
+
+      <div>
+        <%= f.fields_for :materials do |m| %>
+        <div class="row">
+          <%= render 'material_edit_fields', f: m, owner: @owner %>
+        </div>
+        <% end %>
+      </div>
+      <div>
+        <%= f.submit "更新", class: "btn btn-outline-secondary" %>
+      </div>
+      <% end %>
     </div>
-    <div>
-      <%= f.submit "更新", class: "btn btn-outline-secondary" %>
-    </div>
-    <!--<div>
-      <%#= form_with model: @material, local: true do |f| %>
-      <%#= f.text_field :material_name %>
-      <%#= f.submit "追加", class: "btn btn-outline-secondary" %>
-      <%# end %>
-    </div>-->
-    <% end %>
   </div>
 </div>

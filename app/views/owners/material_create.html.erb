@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h2><%= @owner.name %>様資材追加</h2>
+  </div>
+
+  <div class="row">
+    <div>
+      <%= form_with model: @owner, local: true do |f| %>
+
+      <div>
+        <div>
+          <%= f.fields_for :materials do |m| %>
+          <%= render 'material_fields', f: m %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association "追加", f, :materials %>
+          </div>
+        </div>
+
+      </div>
+      <div>
+        <%= f.submit "新規登録", class: "btn btn-outline-secondary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

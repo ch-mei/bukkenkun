@@ -3,11 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  attachment :profile_image
 
   has_many :quotations
   has_many :clients
   has_many :chats, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
+  
+  
 
   # 未読の通知が存在するか確認
   def unchecked_chats?
