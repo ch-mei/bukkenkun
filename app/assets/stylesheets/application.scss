@@ -14,6 +14,8 @@
  *= require_self
  */
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 
 body {
@@ -115,53 +117,22 @@ body {
 }
 
 
-  h1{
-  position: relative;
-  padding: 1.5rem;
-  text-align: center;
-  border: 2px solid #000;
-  background: #fff;
-  }
+////////////////////////////////////////login////////////////////////////////////////
 
-  h1:before,
-  h1:after {
-    position: absolute;
-    content: '';
-  }
 
-  h1:before {
-    top: -40px;
-    left: calc(50% - 40px);
-    width: 80px;
-    height: 80px;
-    border: 2px solid #000;
-    border-radius: 50%;
-    background: #fff;
-  }
+.fa-envelope:before, {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0e0";
 
-  h1:after {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-  }
+}
 
-  h1 i {
-    font-size: 30px;
-    font-size: 3rem;
-    line-height: 60px;
-    position: absolute;
-    z-index: 1;
-    top: -40px;
-    left: calc(50% - 40px);
-    width: 80px;
-    height: 60px;
-    text-align: center;
-  }
+.fa-solid:before,{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f023";
 
-  h1 span {
-    position: relative;
-    z-index: 1;
-  }
+}
+
+
 

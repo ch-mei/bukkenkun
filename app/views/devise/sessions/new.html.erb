@@ -1,30 +1,43 @@
+<div class="container">
+  <div class="row">
+        <%= image_tag '23092021070146A.png', class: "img-fluid d-block mx-auto w-25 h-25 mt-1 mb-1" %>
+  </div>
+</div>
 
-  <h1><i class="fas fa-home"><span>物件君</span></i></h1>
-
-
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row">
+    <h4 class="bg-light mx-auto">ログイン</h4>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="row">
+    <div class="mx-auto text-center">
+      <%= flash[:error] %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field mb-1" >
+        <i class="fa fa-envelope"></i>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "Email address" %>
+      </div>
+      <div class="field mb-1">
+        <i class="fa fa-lock"></i>
+        <%= f.password_field :password, autocomplete: "current-password", :placeholder => "Password" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <div class="actions">
+        <%= f.submit "ログイン" %>
+      </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+
+
+
+
+

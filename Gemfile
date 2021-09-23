@@ -87,3 +87,5 @@ gem 'carrierwave', '~> 2.0'
 gem 'cocoon' 
 
 gem 'pry-rails'
+
+gem 'font-awesome-sass'

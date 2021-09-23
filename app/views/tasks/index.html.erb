@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <h3 class="mx-auto">TO DOリスト</h3>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-8 mx-auto">
+      <div class="text-right">
+        <%= link_to "タスク作成", new_task_path, class: "btn btn-outline-secondary" %>
+      </div>
+      <% if @tasks.blank? %>
+        <div>
+          タスクがありません
+        </div>
+      <% else %>
+        <table class="table table-hover table-inversey">
+          <thead class="thead-light">
+            <tr>
+              <th>タスク</th>
+              <th>期限</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @tasks.each do |task| %>
+            <tr>
+              <td>
+                <li>
+                  <%= link_to edit_task_path(task) do %>
+                    <%= task.task %>
+                  <% end %>
+                </li>
+              </td>
+              <td>
+                <%= task.limit_date %>
+              </td>
+              <td>
+                <%= link_to "削除", task_path(task), method: :delete, class: "btn btn-outline-secondary" %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
