@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-    <h2><%= @owner.name %>様　見積もり追加画面</h2>
+    <h2 class="mx-auto mt-3"><%= @owner.name %>様　見積もり追加画面</h2>
   </div>
-
+</div>
+<div class="container">
   <div class="row">
-    <div>
+    <div class="mx-auto mt-3">
       <%= form_with model: @quotation, local: true do |f| %>
         <table>
           <tr>
@@ -31,10 +32,11 @@
             <td><%= f.text_field :comment %></td>
           </tr>
         </table>
-        <div>
+        <div class="text-center">
           <%= f.submit "登録", class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+

@@ -1,57 +1,48 @@
 <div class="container">
   <div class="row">
-    <h3>マイページ編集画面</h3>
+    <h3 class="mx-auto">マイページ編集画面</h3>
   </div>
+
   <div class="row">
-    <%= form_with model: @user do |f| %>
-
-    <div class="form-group">
-      <div class="row">
-        <div>
-          <%= f.attachment_field :profile_image %>
-        </div>
-      </div>
-      <div class="row">
-        <div>
-          <%= f.label :氏名 %>
-        </div>
-        <%= f.text_field :name %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div>
-          <%= f.label :メールアドレス %>
-        </div>
-        <%= f.text_field :email %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div>
-          <%= f.label :役職名 %>
-        </div>
-        <%= f.text_field :director %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div>
-          <%= f.label :社用携帯番号 %>
-        </div>
-        <%= f.text_field :telephon_number %>
+    <div class="mx-auto">
+      <%= form_with model: @user do |f| %>
+      <table class="mx-auto">
+        <tr>
+          <th>画像</th>
+          <td>
+            <%= f.attachment_field :profile_image %>
+          </td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td>
+            <%= f.text_field :name %>
+          </td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td>
+            <%= f.text_field :email %>
+          </td>
+        </tr>
+        <tr>
+          <th>役職名</th>
+          <td>
+            <%= f.text_field :director %>
+          </td>
+        </tr>
+        <tr>
+          <th>社用携帯番号</th>
+          <td>
+            <%= f.text_field :telephon_number %>
+          </td>
+        </tr>
+      </table>
+      <div class="text-center">
+        <%= f.submit "変更", class: "btn btn-outline-secondary" %>
+        <%= link_to "退会", confirm_unsubscribe_path(@user), class: "btn btn-danger" %>
       </div>
     </div>
-
-    <div class="row">
-      <%= f.submit "変更", class: "btn btn-outline-secondary" %>
-      <%= link_to "退会", confirm_unsubscribe_path(@user), class: "btn btn-danger" %>
-    </div>
-
-
     <% end %>
   </div>
 </div>

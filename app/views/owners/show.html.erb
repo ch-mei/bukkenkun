@@ -1,62 +1,57 @@
 <div class="container">
   <div class="row">
-    <h2><%= @owner.name %>様</h2>
+     <div class="mx-auto mt-3">
+      <h2><%= @owner.name %>様</h2>
+    </div>
+    <div class="mt-3">
+      <%= link_to "見積もり一覧へ", quotations_index_path(@owner), class: "btn btn-outline-secondary" %>
+    </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div>
-      <%= link_to "見積もり一覧へ", quotations_index_path(@owner), class: "btn btn-success" %>
-    </div>
-
-
+    <table class="table table-bordered">
+      <thead class="bg-light">
+        <tr>
+          <th>資材名</th>
+          <th>発注状況</th>
+          <th>発注予定日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @materials.each do |material| %>
+        <tr>
+          <td>
+            <%= material.material_name %>
+          </td>
+          <td>
+            <% if material.order_status == false %>
+              未発注
+            <% else %>
+              発注済み
+            <% end %>
+          </td>
+          <td>
+            <%= material.order_date %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>
 
+<div class="container">
   <div class="row">
-    <div>発注状況一覧</div>
-  </div>
-
-  <div class="row">
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>資材名</th>
-            <th>発注状況</th>
-            <th>発注予定日</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @materials.each do |material| %>
-          <tr>
-            <td>
-              <%= material.material_name %>
-            </td>
-            <td>
-              <% if material.order_status == false %>
-                未発注
-              <% else %>
-                発注済み
-              <% end %>
-            </td>
-            <td>
-              <%= material.order_date %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-4">
+      <%= link_to "物件情報編集", edit_owner_path(@owner), class: "btn btn-outline-secondary" %>
     </div>
-
-  </div>
-  <div>
-    <%= link_to "物件情報編集", edit_owner_path(@owner), class: "btn btn-outline-secondary" %>
-  </div>
-  <div>
-    <%= link_to "発注内容変更", material_edit_owner_path(@owner), class: "btn btn-outline-secondary" %>
-  </div>
-  <div>
-    <%= link_to "資材追加", material_create_owner_path(@owner), method: :get, class: "btn btn-outline-secondary" %>
+    <div class="col-4">
+      <%= link_to "発注内容変更", material_edit_owner_path(@owner), class: "btn btn-outline-secondary" %>
+    </div>
+    <div class="col-4">
+      <%= link_to "資材追加", material_create_owner_path(@owner), method: :get, class: "btn btn-outline-secondary" %>
+    </div>
   </div>
 </div>

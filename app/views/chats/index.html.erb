@@ -1,25 +1,29 @@
 <div class="container">
   <div class="row">
-    <h2>チャット一覧</h2>
+    <h2 class="mx-auto">チャット一覧</h2>
+  </div>
+  <div class="row">
+    <table class="mx-auto">
+      <tr>
+        <td >
+          <% @users.each do |f| %>
+            <% if f != current_user %>
+              <%= link_to chat_path(f.id) do %>
+                <h5><%= f.name %>さん</h5>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @users %>
+    </div>
   </div>
 </div>
 
-<table class="room">
-  <tbody>
-    <tr>
-      <td>
-        <% @users.each do |f| %>
-          <% if f != current_user %>
-            <%= link_to chat_path(f.id) do %>
-              <h4><%= f.name %>さん</h4>
-            <% end %>
-          <% end %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
-<div>
-  <%= paginate @users %>
-</div>
+
+

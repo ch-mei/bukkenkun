@@ -1,21 +1,23 @@
 <div class="container">
   <div class="row">
-    <h2>顧客一覧</h2>
-    <div>
-      <%= link_to "顧客追加", new_client_path, class: "btn btn-outline-secondary" %>
-    </div>
-    <div class="search-form">
+    <h2 class="mx-auto">顧客一覧</h2>
+  </div>
+  <div class="row">
+    <div class="text-left">
       <%= form_with url: search_clients_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, value: @keyword %>
         <%= f.submit "検索" %>
       <% end %>
     </div>
+    <div class="mx-auto">
+      <%= link_to "顧客追加", new_client_path, class: "btn btn-outline-secondary" %>
+    </div>
   </div>
 
   <div class="row">
-    <div>
-      <table>
-        <thead>
+    <div class="mx-auto">
+      <table class="table">
+        <thead class="bg-light">
           <tr>
             <th>顧客名</th>
             <th>物件数</th>
@@ -37,10 +39,11 @@
         </tbody>
       </table>
     </div>
-
   </div>
-  <div>
-    <%= paginate @clients %>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @clients %>
+    </div>
   </div>
 
 </div>

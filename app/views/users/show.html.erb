@@ -1,23 +1,28 @@
 <div class="container">
   <div class="row">
     <% if @user == current_user %>
-      <h3>マイページ</h3>
+      <h2 class="mx-auto">マイページ</h2>
     <% else %>
-      <h3>ユーザー詳細ページ</h3>
-    <% end %>
-  </div>
-  <div>
-    登録情報
-    <% if @user == current_user %>
-      <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary m-2 ml-auto" %>
+      <h2 class="mx-auto">ユーザー詳細ページ</h2>
     <% end %>
   </div>
   <div class="row">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: 'jpeg' %>
+    <div class="mx-auto">
+      登録情報
+      <% if @user == current_user %>
+        <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary m-2 ml-auto" %>
+      <% end %>
+    </div>
   </div>
-    <table>
+  <div class="row">
+    <div class="mx-auto">
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: 'jpeg' %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="mx-auto mt-2">
       <tr>
-        <th>氏名</th>
+        <th class="">氏名</th>
         <td><%= @user.name %></td>
       </tr>
       <tr>
@@ -35,14 +40,13 @@
       <tr>
         <td>
           <% if current_user != @user %>
-            <%= link_to 'チャット画面へ', chat_path(@user.id) %>
+            <%= link_to 'チャット画面へ', chat_path(@user.id), class: "btn btn-outline-secondary" %>
           <% end %>
         </td>
       </tr>
     </table>
   </div>
-
-  <div>
-    <%= link_to "ユーザー一覧", users_path, class: "btn btn-success" %>
+  <div class="text-right">
+    <%= link_to "ユーザー一覧", users_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>

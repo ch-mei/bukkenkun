@@ -20,7 +20,7 @@ class OwnersController < ApplicationController
     if @owner.save!
       redirect_to owner_path(@owner)
     else
-      redirect_back(fallback_location: root_path)
+      redirect_back
     end
   end
 
