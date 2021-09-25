@@ -59,7 +59,7 @@ class OwnersController < ApplicationController
   end
 
   def search
-    @owners = Owner.search(params[:keyword])
+    @owners = Owner.search(params[:keyword]).page(params[:id]).per(10)
     @keyword = params[:keyword]
     render "index"
   end

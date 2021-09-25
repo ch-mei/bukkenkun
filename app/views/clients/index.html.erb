@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
-    <h2 class="mx-auto">顧客一覧</h2>
+    <div class="mx-auto mt-3">
+      <h2>顧客一覧</h2>
+    </div>
   </div>
+</div>
+
+<div class="container">
   <div class="row">
     <div class="text-left">
       <%= form_with url: search_clients_path, method: :get, local: true do |f| %>
@@ -13,37 +18,39 @@
       <%= link_to "顧客追加", new_client_path, class: "btn btn-outline-secondary" %>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="mx-auto">
-      <table class="table">
-        <thead class="bg-light">
-          <tr>
-            <th>顧客名</th>
-            <th>物件数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @clients.each do |f| %>
-          <tr>
-            <td>
-              <%= link_to client_path(f.id) do %>
-                <%= f.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= f.owners.count %>件
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+<div class="container">
+  <div class="mx-auto text-center">
+    <table class="table table-bordered">
+      <thead class="bg-light">
+        <tr>
+          <th>顧客名</th>
+          <th>物件数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |f| %>
+        <tr>
+          <td>
+            <%= link_to client_path(f.id) do %>
+              <%= f.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= f.owners.count %>件
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>
+
+<div class="container">
   <div class="row">
     <div class="mx-auto">
       <%= paginate @clients %>
     </div>
   </div>
-
 </div>

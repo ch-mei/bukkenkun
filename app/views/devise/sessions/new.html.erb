@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-        <%= image_tag '23092021070146A.png', class: "img-fluid d-block mx-auto w-25 h-25 mt-1 mb-1" %>
+    <%= image_tag '23092021070146A.png', class: "img-fluid d-block mx-auto w-25 h-25 mt-1 mb-1" %>
   </div>
 </div>
 
-<div class="container">
+<div class="containe">
   <div class="row">
     <h4 class="bg-light mx-auto">ログイン</h4>
   </div>
@@ -24,10 +24,10 @@
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label :remember_me, "ログインしたままにする" %>
         </div>
       <% end %>
-      <div class="actions">
+      <div class="box-login">
         <%= f.submit "ログイン" %>
       </div>
       <% end %>

@@ -1,60 +1,47 @@
 <div class="container">
   <div class="row">
-    <h2><%= @client.name %>様</h2>
-  </div>
-
-  <div class="row">
-    <%= link_to "顧客編集", edit_client_path, class: "btn btn-outline-secondary" %>
-  </div>
-
-  <div class="row">
-    <!--<div>
-      <table>
-        <thead>
-          <tr>
-            <th>工務店</th>
-          </tr>
-        </thead>
-        <tbody>
-          <div>
-            <%# @construction_shops.each do |f| %>
-            <tr>
-              <td><%#= link_to f.construction_shop_name, construction_shop_path(f.id) %></td>
-            </tr>
-          </div>
-          <div>
-            <# end %>
-            <%#= form_with model: @construction_shop, url: construction_shops_path, local: true do |f| %>
-              <%#= f.text_field :construction_shop_name %>
-              <%#= f.hidden_field :sales_outlet_id, value: @sales_outlet.id %>
-              <%#= f.hidden_field :client_id %>
-              <%#= f.submit "工務店を追加する", class: "btn btn-success" %>
-            <%# end %>
-          </div>
-        </tbody>
-      </table>
-    </div>-->
-
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>物件一覧</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @owners.each do |owner| %>
-          <tr>
-            <td>
-              <%= link_to owner_path(owner) do %>
-              <%= owner.name %>
-              <% end %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-
-      </table>
+    <div class="mx-auto mt-3">
+      <h2><%= @client.name %>様</h2>
     </div>
   </div>
 </div>
+
+<div class="container">
+
+    <div class="text-right">
+      <%= link_to "顧客編集", edit_client_path, class: "btn btn-outline-secondary" %>
+    </div>
+
+</div>
+
+<div class="container">
+  <div class="mx-auto text-center">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th>物件一覧</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @owners.each do |owner| %>
+        <tr>
+          <td>
+            <%= link_to owner_path(owner) do %>
+            <%= owner.name %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @owners %>
+    </div>
+  </div>
+</div>
+

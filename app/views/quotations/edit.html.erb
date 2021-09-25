@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
-    <h2>見積もり編集</h2>
+    <div class="mx-auto mt-3">
+      <h2>見積もり編集</h2>
+    </div>
   </div>
+</div>
 
+<div class="container">
   <div class="row">
-    <div>
+    <div class="mx-auto">
       <%= form_with model: @quotation, local: true do |f| %>
         <table>
           <tr>
@@ -32,12 +36,14 @@
             <td><%= f.text_field :comment %></td>
           </tr>
         </table>
-        <div>
-          <div>
-            <%= f.submit "変更", class: "btn btn-outline-secondary" %>
-          </div>
-          <div>
-            <%= link_to "削除", quotation_path(@quotation), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
+        <div class="container">
+          <div class="row float-right">
+            <div class="mr-3">
+              <%= f.submit "変更", class: "btn btn-outline-secondary" %>
+            </div>
+            <div>
+              <%= link_to "削除", quotation_path(@quotation), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
+            </div>
           </div>
         </div>
       <% end %>

@@ -5,12 +5,11 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.all.page(params[:page]).per(10)
-    #@owner = Owner.find(params[:id])
   end
 
   def show
     @client = Client.find(params[:id])
-    @owners = @client.owners
+    @owners = @client.owners.page(params[:page]).per(10)
 
   end
 
@@ -29,6 +28,9 @@ class ClientsController < ApplicationController
   end
 
   def update
+    @client = Client.find(params[:id])
+    @client.update(client_params)
+    redirect_to client_path(@client)
   end
 
   def destroy
@@ -38,9 +40,9 @@ class ClientsController < ApplicationController
   end
 
   def search
-    @clients = Client.search(params[:keyword])
+    @clients = Client.search(params[:keyword]).page(params[:page]).per(10)
     @keyword = params[:keyword]
-    render "index"
+    render "index" #検索窓
   end
 
   private

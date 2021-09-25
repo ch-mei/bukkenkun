@@ -1,33 +1,21 @@
-<tr>
-  <th>
-    資材名
-  </th>
-  <td>
+
+  <div class="form-group">
+    <%= f.label :material_name, "資材名", class: "font-weight-bold" %>
       <%= f.text_field :material_name %>
       <%= f.hidden_field :id %>
       <%= f.hidden_field :updated_at %>
-  </td>
-</tr>
-<tr>
-  <th>
-    発注状況
-  </th>
-  <td>
+  </div>
+  <div class="form-group">
+    <%= f.label :order_status, "発注状況", class: "font-weight-bold"  %>
     <%= f.radio_button :order_status, true %><%= f.label :order_status, "発注済み", value: true %>
     <%= f.radio_button :order_status, false %><%= f.label :order_status, "未発注", value: false %>
-  </td>
-</tr>
-<tr>
-  <th>
-    発注予定日
-  </th>
-  <td>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :order_date, "発注予定日", class: "font-weight-bold"  %>
     <%= f.date_field :order_date %>
-  </td>
-</tr>
-<tr class="">
-  <th></th>
-  <td>
-    <%= link_to_remove_association "削除", f , class:"btn btn-outline-secondary" %>
-  </td>
-</tr>
+  </div>
+
+  <div class="form-group text-right">
+      <%= link_to_remove_association "削除", f , class:"btn btn-outline-secondary" %>
+  </div>

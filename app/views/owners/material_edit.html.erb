@@ -1,14 +1,17 @@
 <div class="container">
   <div class="row">
-    <h2 class="mx-auto mt-3"><%= @owner.name %>様発注内容編集</h2>
+    <div class="mx-auto mt-3">
+      <h2><%= @owner.name %>様発注内容編集</h2>
+    </div>
   </div>
 </div>
-<div class="conatiner">
+
+<div class="container">
   <div class="row">
     <div class="mx-auto mt-3">
       <%= form_with model: @owner, url: material_update_owner_path(@owner), local: true do |f| %>
         <%= f.fields_for :materials do |m| %>
-        <div class="row">
+        <div class="nested-fields">
           <%= render 'material_edit_fields', f: m, owner: @owner %>
         </div>
         <% end %>
@@ -17,6 +20,6 @@
         <%= f.submit "更新", class: "btn btn-outline-secondary" %>
       </div>
       <% end %>
-    </div>
+      </div>
   </div>
 </div>

@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row">
-    <h2>顧客編集画面</h2>
+    <div class="mx-auto mt-3">
+      <h2>顧客編集画面</h2>
+    </div>
   </div>
+</div>
 
-  <div class="row">
+<div class="container">
+   <div class="text-center">
     <%= form_with model: @client, local: true do |f| %>
-      <div>
+      <div class="mb-3">
         <%= f.text_field :name %>
       </div>
       <div>
         <%= f.submit "変更", class: "btn btn-outline-secondary" %>
+        <%= link_to "削除", client_path(@client), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
       </div>
     <% end %>
   </div>
-  <div>
-    <%= link_to "削除", client_path(@client), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
-  </div>
 </div>
+
