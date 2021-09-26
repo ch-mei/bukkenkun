@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-  
-  before_action :same_room_user!, only: [:show]
+  before_action :authenticate_user!
+  before_action :same_room_user!, only: [:show] #同じチャットルームを取得しているユーザーのみshowアクション使用可
 
   # 取得している情報はUserRoomsだが、実質Roomのother_userとのリレーションを取得しているためRoomのindexに記述
   def index
@@ -13,11 +13,11 @@ class RoomsController < ApplicationController
 
   def create
     user_rooms = UserRoom.find_user_rooms(current_user, @user)
-    if user_rooms.nil?
+    if user_rooms.nil? #チャットルームがない場合
       room = Room.create
-      UserRoom.create(user_id: current_user.id, room_id: room.id)
-      UserRoom.create(user_id: @user.id, room_id: room.id)
-    else
+      UserRoom.create(user_id: current_user.id, room_id: room.id) #チャット相手のroom作成
+      UserRoom.create(user_id: @user.id, room_id: room.id) #カレントユーザーのroom作成
+    else #チャットルームがすでにある場合の分岐
       room = user_rooms.room
     end
     redirect_to room_path(room.id)
@@ -37,7 +37,6 @@ class RoomsController < ApplicationController
  # URLの直打ちによるアクセスを回避
   def same_room_user!
     return if Room.find(params[:id]).users.include?(current_user)
-
     flash[:danger] = 'ユーザーにはアクセスする権限がありません'
     redirect_to root_path
   end

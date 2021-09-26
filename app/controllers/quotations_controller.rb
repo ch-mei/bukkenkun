@@ -1,7 +1,9 @@
 class QuotationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @owner = Owner.find(params[:id])
-    @quotations = @owner.quotations.page(params[:page]).per(10)
+    @quotations = @owner.quotations.page(params[:page]).per(10) #ページネーション
   end
 
   def new
@@ -30,8 +32,12 @@ class QuotationsController < ApplicationController
 
   def update
     @quotation = Quotation.find(params[:id])
-    @quotation.update(quotation_params)
-    redirect_to quotation_path(@quotation)
+    if @quotation.update(quotation_params)
+      flash[:success] = "情報を更新しました"
+      redirect_to quotation_path(@quotation)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
