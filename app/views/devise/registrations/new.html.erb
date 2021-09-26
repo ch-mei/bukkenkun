@@ -39,9 +39,14 @@
             <%= f.submit "新規登録" %>
           </div>
       <% end %>
+
+      <div class="box-newusr">
+        <p><span>------------------------</span>すでに登録済みの方 <span>-----------------------</span></p>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 
 
 
-<%= render "devise/shared/links" %>
+
