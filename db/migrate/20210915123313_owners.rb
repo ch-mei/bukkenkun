@@ -3,8 +3,8 @@ class Owners < ActiveRecord::Migration[5.2]
     create_table :owners do |t|
       t.integer :client_id
       t.integer :material_id
-      t.text :comment, null: true #コメント
-      t.string :name #物件名
+      t.text :comment, null: true 
+      t.string :name 
 
       t.timestamps
     end
