@@ -48,21 +48,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_102740) do
     t.string "name"
   end
 
-  create_table "form_bases", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "form_material_collections", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "form_materials", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "materials", force: :cascade do |t|
     t.string "material_name"
     t.boolean "order_status", default: false, null: false
@@ -77,12 +62,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_102740) do
     t.integer "material_id"
     t.text "comment"
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "pdfs", force: :cascade do |t|
-    t.string "pdf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
