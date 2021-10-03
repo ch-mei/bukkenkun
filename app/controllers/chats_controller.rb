@@ -25,7 +25,7 @@ class ChatsController < ApplicationController
 
  def create
   @chat = current_user.chats.new(chat_params)
-  @chat.save! #非同期通信のため、redirect先
+  @chat.save! #非同期通信のため、redirect先の記載なし
  end
 
  private

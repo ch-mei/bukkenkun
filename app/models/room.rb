@@ -2,7 +2,7 @@ class Room < ApplicationRecord
   
   has_many :user_rooms, dependent: :destroy
   has_many :chats
-  has_many :use_rooms
+  has_many :uses, through: :user_rooms
   
   # チャット通知を既読にするためのメゾット
   def check_chats_notification(current_user)
