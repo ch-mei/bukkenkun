@@ -1,9 +1,9 @@
 class Room < ApplicationRecord
-  
+
   has_many :user_rooms, dependent: :destroy
   has_many :chats
-  has_many :uses, through: :user_rooms
-  
+  has_many :users, through: :user_rooms
+
   # チャット通知を既読にするためのメゾット
   def check_chats_notification(current_user)
     unchecked_chats = chats.includes(:user).where(checked: false).where.not(user_id: current_user.id)

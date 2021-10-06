@@ -40,7 +40,7 @@
       <tr>
         <td>
           <% if current_user != @user %>
-            <%= link_to 'チャット画面へ', chat_path(@user.id), class: "btn btn-outline-secondary" %>
+            <%= link_to 'チャット画面へ', rooms_path(user_id: @user), method: :post, class: "btn btn-outline-secondary" %>
           <% end %>
         </td>
       </tr>

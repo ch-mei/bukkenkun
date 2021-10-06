@@ -2,10 +2,10 @@ class UserRoom < ApplicationRecord
 
   belongs_to :user
   belongs_to :room
-  
+
   validates :user_id, presence: true
   validates :room_id, presence: true
-  
+
   has_many :chats, through: :room
 
   #チャット相手とのルーム検索
