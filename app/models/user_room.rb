@@ -10,7 +10,7 @@ class UserRoom < ApplicationRecord
 
   #チャット相手とのルーム検索
   def self.find_user_rooms(current_user, other_user)
-    room_ids = current_user.user_rooms.pluck(:room_id)
+    rooms_ids = current_user.user_rooms.pluck(:room_id)
     UserRoom.find_by(user_id: other_user.id, room_id: rooms_ids)
   end
 
