@@ -23,12 +23,4 @@ class User < ApplicationRecord
     self.is_deleted? ? super : :special_condition_is_not_valid
   end
 
-  def unchecked_chats?
-    my_rooms_ids = UserRoom.select(:room_id).where(user_id: id)
-    other_user_ids = UserRoom.select(:user_id).where(room_id: my_rooms_ids).where.not(user_id: id)
-    Chat.where(user_id: other_user_ids, room_id: my_rooms_ids).where.not(checked: true).any?
-  end
-
-  def persisted? ; false ; end
-
 end
