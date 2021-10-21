@@ -33,9 +33,9 @@
                 <li class="nav-item mr-3">
                   <%= link_to rooms_path, class: 'btn btn-outline-secondary' do %>
                     <%= "チャット" %>
-                    <% if current_user.unchecked_chats? %>
-                      <i class="fa fa-circle fa-xs n-circle-chat" style="color: blue"></i>
-                    <% end %>
+                    <%# if current_user.unchecked_chats? %>
+                      <!--<i class="fa fa-circle fa-xs n-circle-chat" style="color: blue"></i>-->
+                    <%# end %>
                   <% end %>
                 </li>
                 <li class="nav-item mr-3"><%= link_to "顧客", clients_path, class: 'btn btn-outline-secondary' %></li>
