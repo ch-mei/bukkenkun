@@ -6,14 +6,12 @@
       <h2 class="mx-auto">ユーザー詳細ページ</h2>
     <% end %>
   </div>
-  <div class="row">
-    <div class="mx-auto">
-      登録情報
-      <% if @user == current_user %>
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary m-2 ml-auto" %>
-      <% end %>
-    </div>
+  <div class="text-right">
+    <% if @user == current_user %>
+      <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary" %>
+    <% end %>
   </div>
+
   <div class="row">
     <div class="mx-auto">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", format: 'jpeg' %>
