@@ -14,7 +14,7 @@
       <%= f.text_field :name %>
     </div>
     <div>
-      <%= f.submit "編集", class: "btn btn-outline-secondary" %>
+      <%= f.submit "変更", class: "btn btn-outline-secondary" %>
       <%= link_to "削除", owner_path(@owner), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-outline-secondary" %>
     </div>
   <% end %>
