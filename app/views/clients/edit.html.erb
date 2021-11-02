@@ -10,6 +10,7 @@
    <div class="text-center">
     <%= form_with model: @client, local: true do |f| %>
       <div class="mb-3">
+        <%= f.label :name, "顧客名" %>
         <%= f.text_field :name %>
       </div>
       <div>
