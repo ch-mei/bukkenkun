@@ -7,18 +7,20 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="text-left">
+    <div class="text-right">
       <%= form_with url: search_owners_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, value: @keyword %>
         <%= f.submit "検索" %>
       <% end %>
     </div>
-    <div class="mx-auto">
-      <%= link_to "物件追加", new_owner_path, class: "btn btn-outline-secondary" %>
-    </div>
+</div>
+
+<div class="container">
+  <div class="text-left">
+    <%= link_to "物件追加", new_owner_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>
+
 <div class="container">
   <div class="mx-auto text-center">
     <table class="table table-bordered">
