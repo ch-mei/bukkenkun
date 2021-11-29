@@ -5,13 +5,13 @@
 </div>
 <div class="container">
   <div class="mx-auto">
-    <table class="table table-borderless text-center">
+    <table class="table table-borderless text-left">
       <tr>
         <td>
           <% @users.each do |f| %>
             <% if f != current_user %>
               <%= link_to chat_path(f.id) do %>
-                <h5><%= f.name %>さん</h5>
+                <h5><li><%= f.name %>さん</li></h5>
               <% end %>
             <% end %>
           <% end %>
